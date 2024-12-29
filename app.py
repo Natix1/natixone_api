@@ -35,15 +35,27 @@ VISITS_FILE = "visits.txt"
 def getplusincrement():
     visits = libapi.get_visits()
     libapi.increment_visits()
-    return visits
+    return visits, 200
     # Client-side configured to accept plaintext
 
 @app.route('/v1/views', methods=['GET'])
 @limiter.limit("20 per minute")
 def retrieve():
     visits = libapi.get_visits()
-    return visits
+    return visits, 200
     # Client-side configured to accept plaintext
+
+@app.route('/v1/motd', methods=['GET'])
+@limiter.limit("10 per minute")
+def get_motd():
+    with open("motd.txt", "r") as f:
+        return f.read(), 200
+        # Client-side configured to accept plaintext
+        
+@app.route('/v1/ping', methods=['GET'])
+@limiter.limit("10 per minute")
+def ping():
+    return "Pong", 200
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
