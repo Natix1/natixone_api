@@ -2,5 +2,5 @@
 FLASK_PRODUCTION=true
 WORKDIR="/srv/natixone_api"
 cd $WORKDIR
-source ./venv/bin/activate
-gunicorn --workers=2 --bind 0.0.0.0:5000 app:app
+source $WORKDIR/venv/bin/activate
+$WORKDIR/venv/bin/gunicorn -w 2 --bind 0.0.0.0:5000 app:app
