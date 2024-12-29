@@ -57,5 +57,11 @@ def get_motd():
 def ping():
     return "Pong", 200
 
+@app.route("/", methods=['GET'])
+@limiter.limit("10 per minute")
+def index():
+    return "Welcome to the API. This is mostly backend stuff for my webpage, but, feel free to look around!", 200
+
+
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
