@@ -1,5 +1,5 @@
 # Library for my API
-# Contains funcs like I/O from visits.txt
+# Contains funcs like I/O from views.txt
 
 VISITS_FILE = "./views.txt"
 
