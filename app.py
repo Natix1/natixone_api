@@ -6,6 +6,8 @@ import os
 import json
 import src.libapi as libapi
 
+libapi.verify_integrity()
+
 # Initialize Flask app
 app = Flask(__name__)
 

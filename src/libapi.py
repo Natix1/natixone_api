@@ -3,6 +3,16 @@
 
 VISITS_FILE = "./cfg/views.txt"
 MOTD_FILE = "./cfg/motd.txt"
+import os
+
+def verify_integrity():
+    if not os.path.exists(VISITS_FILE):
+        with open(VISITS_FILE, "w") as f:
+            f.write("0")
+            
+    if not os.path.exists(VISITS_FILE):
+        with open(VISITS_FILE, "w") as f:
+            f.write("Hello, world!")
 
 def get_visits():
     with open(VISITS_FILE, "r") as f:
