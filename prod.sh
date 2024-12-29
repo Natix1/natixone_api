@@ -1,5 +1,5 @@
 #!/bin/bash
-FLASK_PRODUCTION=true
+export FLASK_PRODUCTION=true
 WORKDIR="/srv/natixone_api"
 cd $WORKDIR
 source $WORKDIR/venv/bin/activate
