@@ -14,13 +14,19 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Initialize rate limiting
 
-
-limiter = Limiter(
-    get_remote_address,
-    app=app,
-    storage_uri="redis://localhost:6379",
-    strategy="fixed-window",
-)
+if os.environ.get("FLASK_PRODUCTION") == "true":
+    limiter = Limiter(
+        get_remote_address,
+        app=app,
+        storage_uri="redis://localhost:6379",
+        strategy="fixed-window",
+    )
+else:
+    limiter = Limiter(
+        get_remote_address,
+        app=app,
+        strategy="fixed-window",
+    )
 
 VISITS_FILE = "visits.txt"
 
