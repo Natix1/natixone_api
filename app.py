@@ -14,6 +14,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Initialize rate limiting
 
+
 limiter = Limiter(
     get_remote_address,
     app=app,
