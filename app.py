@@ -48,8 +48,7 @@ def retrieve():
 @app.route('/v1/motd', methods=['GET'])
 @limiter.limit("10 per minute")
 def get_motd():
-    with open("motd.txt", "r") as f:
-        return f.read(), 200
+    return libapi.get_motd()
         # Client-side configured to accept plaintext
         
 @app.route('/v1/ping', methods=['GET'])
